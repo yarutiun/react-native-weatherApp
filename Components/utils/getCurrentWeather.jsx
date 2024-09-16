@@ -6,7 +6,6 @@ const getCurrentWeather = async (lat, long, setCurrentWeather, location) => {
     const response = await fetch(query);
     const data = await response.json();
     const desc = openWeatherWMOToEmoji(data.current.weather_code);
-    console.log(data);
     setCurrentWeather({
         location: '',
         temp: `${data.current.temperature_2m}°C`,

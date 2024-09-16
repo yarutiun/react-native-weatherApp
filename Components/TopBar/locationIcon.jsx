@@ -2,13 +2,15 @@ import React from 'react';
 import { Image, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import getPermissions from '../utils/getPermissions';
 import getCurrentWeather from '../utils/getCurrentWeather';
+import getTodayWeather from '../utils/getTodayWeather';
 
-const LocationIcon = ({ setLatLong, lat_long, setCurrentWeather }) => {
+const LocationIcon = ({ setLatLong, lat_long, setCurrentWeather, setTodayWeather }) => {
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => {
         getPermissions({ setLatLong });
         getCurrentWeather(lat_long.lat, lat_long.long, setCurrentWeather);
+        getTodayWeather(lat_long.lat, lat_long.long, setTodayWeather);
           }}>
         <Image source={require('../../imgs/location.png')} style={styles.icon} />
       </TouchableWithoutFeedback>

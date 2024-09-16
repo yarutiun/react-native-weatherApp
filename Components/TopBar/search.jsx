@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet, FlatList, Text, TouchableOpacity } from 'react-native';
 
-const Search = ({ city, setCity, setSearchLatLong }) => {
+const Search = ({ city, setCity, setSearchLatLong, setTodayWeather }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
   
