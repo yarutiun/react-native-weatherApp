@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet, FlatList, Text, TouchableOpacity } from 'react-native';
 
-const Search = () => {
-  const [city, setCity] = useState('');
+const Search = ({ city, setCity, setSearchLatLong }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
   
@@ -41,6 +40,7 @@ const Search = () => {
   const selectCity = (selectedCity) => {
     setCity(selectedCity.name);
     setSuggestions([]);
+    setSearchLatLong({ lat: selectedCity.latitude, long: selectedCity.longitude });
   };
 
   return (

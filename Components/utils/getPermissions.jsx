@@ -8,6 +8,7 @@ const getPermissions = async ({setLatLong}) => {
       return;
     }
     let location = await Location.getCurrentPositionAsync({});
+    console.log(location);
     setLatLong({ lat: location.coords.latitude, long: location.coords.longitude });
   };
 

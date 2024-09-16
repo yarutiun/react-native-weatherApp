@@ -8,12 +8,14 @@ import getCurrentWeather from "./Components/utils/getCurrentWeather";
 
 const App = () => {
   const [lat_long, setLatLong] = useState({ lat: 0.0, long: 0.0 });
+  const [searchLat_long, setSearchLatLong] = useState({ lat: 0.0, long: 0.0 });
+  const [city, setCity] = useState('');
   const [when, setWhen] = useState('Currently');
   const [currentWeather, setCurrentWeather] = useState({
-    location: '',
-    temp: 0.0,
-    description: '',
-    windSpeed: 0.0
+    // location: '',
+    // temp: 0.0,
+    // description: '',
+    // windSpeed: 0.0
   });
 
 
@@ -21,16 +23,16 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.viewContainer}>
         <View style={{marginTop: 30}}>
-          <SearchIcon style={styles.searchIcon} />
+          <SearchIcon style={styles.searchIcon} city={city} lat_long={searchLat_long} setCurrentWeather={setCurrentWeather}/>
         </View>
-        <Search style={styles.search} />
+        <Search style={styles.search} city={city} setCity={setCity} setSearchLatLong={setSearchLatLong}/>
         <View style={{marginTop: 30}}>
-          <LocationIcon setLatLong={setLatLong} />
+          <LocationIcon setLatLong={setLatLong} lat_long={lat_long} setCurrentWeather={setCurrentWeather}/>
         </View>      
       </View>
       <ScrollView contentContainerStyle={styles.center}>
         <Text style={styles.when}> { when } </Text>
-        <Text style={styles.where}>{lat_long.lat !== 0 && lat_long.long !== 0 ? `${lat_long.lat}  ${lat_long.long}` : ''}</Text>
+        {when === 'Currently' ? <Text style={styles.where}>{currentWeather.temp} {currentWeather.description} {currentWeather.windSpeed}</Text> : ''}
       </ScrollView>
       <Footer style={styles.footer} setWhen={setWhen}/>
     </SafeAreaView>

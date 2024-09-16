@@ -1,11 +1,13 @@
 import React from 'react';
 import { Image, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import getCurrentWeather from '../utils/getCurrentWeather';
 
-const SearchIcon = () => {
+const SearchIcon = ({ city, setCurrentWeather, lat_long}) => {
+  
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => {
-        alert('Icon pressed')
+        getCurrentWeather(lat_long.lat, lat_long.long, setCurrentWeather);
       }}>
         <Image source={require('../../imgs/search.png')} style={styles.icon} />
       </TouchableWithoutFeedback>
