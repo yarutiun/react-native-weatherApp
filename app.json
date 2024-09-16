@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "weatherAppV2Proj",
+    "slug": "weatherAppV2Proj",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Allow weatherAppV2Proj to use your location",
+        "NSLocationAlwaysUsageDescription": "Allow weatherAppV2Proj to use your location",
+        "NSLocationWhenInUseUsageDescription": "Allow weatherAppV2Proj to use your location"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
