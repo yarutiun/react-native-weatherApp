@@ -1,4 +1,5 @@
 import * as Location from 'expo-location';
+import { getCurrentWeather } from './getCurrentWeather';
 
 const getPermissions = async ({setLatLong}) => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -7,7 +8,6 @@ const getPermissions = async ({setLatLong}) => {
       return;
     }
     let location = await Location.getCurrentPositionAsync({});
-    console.log(location);
     setLatLong({ lat: location.coords.latitude, long: location.coords.longitude });
   };
 

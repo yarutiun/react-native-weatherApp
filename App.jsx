@@ -4,20 +4,28 @@ import Search from "./Components/TopBar/search";
 import SearchIcon from "./Components/TopBar/searchIcon";
 import LocationIcon from "./Components/TopBar/locationIcon";
 import Footer from "./Components/BottomBar/bottomBar";
+import getCurrentWeather from "./Components/utils/getCurrentWeather";
 
 const App = () => {
   const [lat_long, setLatLong] = useState({ lat: 0.0, long: 0.0 });
   const [when, setWhen] = useState('Currently');
+  const [currentWeather, setCurrentWeather] = useState({
+    location: '',
+    temp: 0.0,
+    description: '',
+    windSpeed: 0.0
+  });
+
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewContainer}>
         <View style={{marginTop: 30}}>
-          <SearchIcon style={styles.searchIcon}/>
+          <SearchIcon style={styles.searchIcon} />
         </View>
         <Search style={styles.search} />
         <View style={{marginTop: 30}}>
-          <LocationIcon setLatLong={setLatLong}/>
+          <LocationIcon setLatLong={setLatLong} />
         </View>      
       </View>
       <ScrollView contentContainerStyle={styles.center}>

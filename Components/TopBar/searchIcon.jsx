@@ -4,7 +4,9 @@ import { Image, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 const SearchIcon = () => {
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => alert('Search icon pressed')}>
+      <TouchableWithoutFeedback onPress={() => {
+        alert('Icon pressed')
+      }}>
         <Image source={require('../../imgs/search.png')} style={styles.icon} />
       </TouchableWithoutFeedback>
     </View>

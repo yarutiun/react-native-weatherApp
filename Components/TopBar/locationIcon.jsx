@@ -5,7 +5,9 @@ import getPermissions from '../utils/getPermissions';
 const LocationIcon = ({ setLatLong }) => {
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => getPermissions({ setLatLong })}>
+      <TouchableWithoutFeedback onPress={() => {
+        getPermissions({ setLatLong });
+          }}>
         <Image source={require('../../imgs/location.png')} style={styles.icon} />
       </TouchableWithoutFeedback>
     </View>
