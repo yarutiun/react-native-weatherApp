@@ -29,7 +29,6 @@ const getTodayWeather = async (lat, long, setTodayWeather, location) => {
 
     } catch (error) {
         console.error('Error fetching today\'s weather data:', error);
-        alert('Error fetching today\'s weather data');
         setTodayWeather({
             location: location || '',
             hours: [],

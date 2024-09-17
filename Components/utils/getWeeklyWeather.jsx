@@ -36,7 +36,6 @@ const getWeeklyWeather = async (lat, long, setWeeklyWeather, location) => {
         });
     } catch (error) {
         console.error('Error fetching weekly weather data:', error);
-        alert('Error fetching weekly weather data');
         setWeeklyWeather({
             location: location || '',
             date: [],

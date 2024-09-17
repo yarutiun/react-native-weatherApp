@@ -13,13 +13,12 @@ const getCurrentWeather = async (lat, long, setCurrentWeather, location) => {
             windSpeed: `${data.current.wind_speed_10m} km/h`
         });
     } catch (error) {
-        console.error('Error fetching current weather data:', error);
-        alert('Error fetching current weather data');
+        alert('Error fetching weather data');
         setCurrentWeather({
             location: '',
             temp: 'N/A',
             description: 'N/A',
-            windSpeed: 'N/A'
+            windSpeed: 'N/A',
         });
     }
 };
