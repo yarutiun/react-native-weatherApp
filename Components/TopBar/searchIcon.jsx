@@ -2,14 +2,20 @@ import React from 'react';
 import { Image, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import getCurrentWeather from '../utils/getCurrentWeather';
 import getTodayWeather from '../utils/getTodayWeather';
+import getWeeklyWeather from '../utils/getWeeklyWeather';
 
-const SearchIcon = ({ city, setCurrentWeather, lat_long, setTodayWeather}) => {
+const SearchIcon = ({ city, setCurrentWeather, lat_long, setTodayWeather, setWeeklyWeather}) => {
   
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => {
+        if (city.length < 3) {
+          alert('Please enter a valid city name');
+          return;
+        }
         getCurrentWeather(lat_long.lat, lat_long.long, setCurrentWeather);
         getTodayWeather(lat_long.lat, lat_long.long, setTodayWeather);
+        getWeeklyWeather(lat_long.lat, lat_long.long, setWeeklyWeather);
       }}>
         <Image source={require('../../imgs/search.png')} style={styles.icon} />
       </TouchableWithoutFeedback>

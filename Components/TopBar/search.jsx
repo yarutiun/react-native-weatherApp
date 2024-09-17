@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet, FlatList, Text, TouchableOpacity } from 'react-native';
 
-const Search = ({ city, setCity, setSearchLatLong, setTodayWeather }) => {
+const Search = ({ city, setCity, setSearchLatLong }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
   
@@ -13,6 +13,7 @@ const Search = ({ city, setCity, setSearchLatLong, setTodayWeather }) => {
       setData(result.results || []); // Adjust based on the actual response structure
     } catch (error) {
       console.error('Error:', error);
+      alert('Error fetching data');
     }
   };
 
@@ -27,6 +28,9 @@ const Search = ({ city, setCity, setSearchLatLong, setTodayWeather }) => {
   useEffect(() => {
     if (city.length > 2) {
       const filteredCities = data.filter(item => item.name.toLowerCase().includes(city.toLowerCase()));
+      if (filteredCities.length == 0) {
+        return;
+      }
       setSuggestions(filteredCities);
     } else {
       setSuggestions([]);
@@ -38,7 +42,7 @@ const Search = ({ city, setCity, setSearchLatLong, setTodayWeather }) => {
   };
 
   const selectCity = (selectedCity) => {
-    setCity(selectedCity.name);
+    setCity(`${selectedCity.name}, ${selectedCity.admin1}, ${selectedCity.country}`);
     setSuggestions([]);
     setSearchLatLong({ lat: selectedCity.latitude, long: selectedCity.longitude });
   };

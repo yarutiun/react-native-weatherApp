@@ -10,52 +10,94 @@ import getCurrentWeather from "./Components/utils/getCurrentWeather";
 const App = () => {
   const [lat_long, setLatLong] = useState({ lat: 0.0, long: 0.0 });
   const [searchLat_long, setSearchLatLong] = useState({ lat: 0.0, long: 0.0 });
-  const [city, setCity] = useState('');
-  const [when, setWhen] = useState('Currently');
+  const [city, setCity] = useState("");
+  const [when, setWhen] = useState("Currently");
   const [currentWeather, setCurrentWeather] = useState({});
   const [todayWeather, setTodayWeather] = useState({
     hours: [],
     temp: [],
     description: [],
-    windSpeed: []
+    windSpeed: [],
+  });
+  const [weeklyWeather, setWeeklyWeather] = useState({
+    date: [],
+    min: [],
+    max: [],
+    description: [],
   });
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewContainer}>
-        <View style={{marginTop: 30}}>
-          <SearchIcon style={styles.searchIcon} city={city} lat_long={searchLat_long} setCurrentWeather={setCurrentWeather} setTodayWeather={setTodayWeather}/>
+        <View style={{ marginTop: 30 }}>
+          <SearchIcon
+            style={styles.searchIcon}
+            city={city}
+            lat_long={searchLat_long}
+            setCurrentWeather={setCurrentWeather}
+            setTodayWeather={setTodayWeather}
+            setWeeklyWeather={setWeeklyWeather}
+          />
         </View>
-        <Search style={styles.search} city={city} setCity={setCity} setSearchLatLong={setSearchLatLong}/>
-        <View style={{marginTop: 30}}>
-          <LocationIcon setLatLong={setLatLong} lat_long={lat_long} setCurrentWeather={setCurrentWeather} setTodayWeather={setTodayWeather}/>
-        </View>      
+        <Search
+          style={styles.search}
+          city={city}
+          setCity={setCity}
+          setSearchLatLong={setSearchLatLong}
+        />
+        <View style={{ marginTop: 30 }}>
+          <LocationIcon
+            setCity={setCity}
+            setLatLong={setLatLong}
+            lat_long={lat_long}
+            setCurrentWeather={setCurrentWeather}
+            setTodayWeather={setTodayWeather}
+            setWeeklyWeather={setWeeklyWeather}
+          />
+        </View>
       </View>
-      
+
       <ScrollView contentContainerStyle={styles.center}>
-        <Text style={styles.when}> { when } </Text>
-        {when === 'Currently' && currentWeather ? (
+        <Text style={styles.when}>{city}</Text>
+        {when === "Currently" && currentWeather ? (
           <Text style={styles.where}>
-            {currentWeather.temp} {currentWeather.description} {currentWeather.windSpeed}
+            {currentWeather.temp} {currentWeather.description}{" "}
+            {currentWeather.windSpeed}
           </Text>
-        ) : ''}
-        
-        {when === 'Today' && todayWeather.hours.length > 0 ? (
+        ) : (
+          ""
+        )}
+
+        {when === "Today" && todayWeather.hours.length > 0 ? (
           <View>
             {todayWeather.hours.map((hour, index) => (
               <Text key={index} style={styles.weatherItem}>
-                {hour}, Temp: {todayWeather.temp[index]}°C, 
-                Weather: {todayWeather.description[index]}, 
-                Wind: {todayWeather.windSpeed[index]} km/h
+                {hour}, Temp: {todayWeather.temp[index]}°C, Weather:{" "}
+                {todayWeather.description[index]}, Wind:{" "}
+                {todayWeather.windSpeed[index]} km/h
               </Text>
             ))}
           </View>
-        ) : ''}
+        ) : (
+          ""
+        )}
 
-        {when === 'Weekly' ? <Text style={styles.where}>Weekly weather</Text> : ''}
+        {when === "Weekly" && weeklyWeather.date.length > 0 ? (
+          <View>
+            {weeklyWeather.date.map((day, index) => (
+              <Text key={index} style={styles.weatherItem}>
+                {day}, Min: {weeklyWeather.min[index]}°C, Max:{" "}
+                {weeklyWeather.max[index]}°C, Weather:{" "}
+                {weeklyWeather.description[index]}
+              </Text>
+            ))}
+          </View>
+        ) : (
+          ""
+        )}
       </ScrollView>
-      
-      <Footer style={styles.footer} setWhen={setWhen}/>
+
+      <Footer style={styles.footer} setWhen={setWhen} />
     </SafeAreaView>
   );
 };
