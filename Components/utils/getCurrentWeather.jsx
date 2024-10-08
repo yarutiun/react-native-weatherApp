@@ -9,7 +9,7 @@ const getCurrentWeather = async (lat, long, setCurrentWeather, location) => {
         setCurrentWeather({
             location: '',
             temp: `${data.current.temperature_2m}°C`,
-            description: desc.description,
+            description: `${desc.description} ${desc.value}`,
             windSpeed: `${data.current.wind_speed_10m} km/h`
         });
     } catch (error) {

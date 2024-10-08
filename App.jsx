@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View, ImageBackground } from "react-native";
 import styles from "./Components/Style/appStyle";
 import Search from "./Components/TopBar/search";
 import SearchIcon from "./Components/TopBar/searchIcon";
@@ -27,6 +27,11 @@ const App = () => {
   });
 
   return (
+    <ImageBackground
+      source={require("./imgs/background.png")} // Path to your image
+      style={styles.background}
+      resizeMode="cover" // Adjusts the image to cover the entire view
+    >
     <SafeAreaView style={styles.container}>
       <View style={styles.viewContainer}>
         <View style={{ marginTop: 30 }}>
@@ -60,10 +65,23 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.center}>
         <Text style={styles.when}>{city}</Text>
         {when === "Currently" && currentWeather ? (
-          <Text style={styles.where}>
-            {currentWeather.temp} {currentWeather.description}{" "}
-            {currentWeather.windSpeed}
-          </Text>
+          <View style={styles.where}>
+            <View style={styles.a}>
+              <Text style={styles.curTemp}>
+              {currentWeather.temp}
+              </Text>
+            </View>
+            <View style={styles.a}>
+              <Text style={styles.curWeather}>
+              {currentWeather.description}{" "}
+              </Text>
+            </View>
+            <View style={styles.a}>
+              <Text style={styles.curWind}>
+              {currentWeather.windSpeed}
+              </Text>
+            </View>
+          </View>
         ) : (
           ""
         )}
@@ -99,6 +117,7 @@ const App = () => {
 
       <Footer style={styles.footer} setWhen={setWhen} />
     </SafeAreaView>
+    </ImageBackground>
   );
 };
 

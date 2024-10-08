@@ -1,9 +1,13 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#3C6E71",
   },
   viewContainer: {
     flexDirection: "row",
@@ -39,6 +43,23 @@ const styles = StyleSheet.create({
   weatherItem: {
     fontSize: 16,
     marginBottom: 10,
+  },
+  curTemp: {
+    fontSize: 40,
+    color: "orange",
+  },
+  curWeather: {
+    fontSize: 40,
+    color: "orange",
+    marginTop: 10,
+  },
+  curWind: {
+    fontSize: 40,
+    flex: 2,
+    color: "orange",
+  },
+  a: {
+    marginTop: '20%',
   }
 });
 
