@@ -1,5 +1,3 @@
-// App.js
-
 import React, { useState } from "react";
 import {
   SafeAreaView,
@@ -8,6 +6,7 @@ import {
   View,
   ImageBackground,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import styles from "./Components/Style/appStyle";
 import Search from "./Components/TopBar/search";
@@ -108,13 +107,6 @@ const App = () => {
           {/* Today's Weather */}
           {when === "Today" && todayWeather.hours.length > 0 ? (
             <View>
-              {/* {todayWeather.hours.map((hour, index) => (
-                <Text key={index} style={styles.weatherItem}>
-                  {hour}, Temp: {todayWeather.temp[index]}°C, Weather:{" "}
-                  {todayWeather.description[index]}, Wind: {todayWeather.windSpeed[index]} km/h
-                </Text>
-              ))} */}
-
               {/* VictoryChart for Today's Temperature */}
               {todayChart.length > 0 && (
                 <VictoryChart theme={VictoryTheme.material}>
@@ -122,7 +114,7 @@ const App = () => {
                     data={todayChart}
                     style={{
                       data: { stroke: "#c43a31" },
-                      parent: { border: "1px solid #ccc"}
+                      parent: { border: "1px solid #ccc" },
                     }}
                     // style={{
                     //   data: { stroke: "#c43a31", strokeWidth: 2 }, // Set the line color and thickness
@@ -131,6 +123,28 @@ const App = () => {
                   />
                 </VictoryChart>
               )}
+              <ScrollView horizontal={true} style={styles.scrollView}>
+                {todayWeather.hours.map((hour, index) => (
+                  <View key={index} style={styles.weatherItem}>
+                    <Text style={styles.hour}>{hour}</Text>
+                    <Text style={styles.desc}>
+                      {todayWeather.description[index]}
+                    </Text>
+                    <Text style={styles.emoji}>
+                      {todayWeather.emoji[index]}
+                    </Text>
+                    <Text style={styles.temp}>
+                      {todayWeather.temp[index]}°C
+                    </Text>
+                    <View style={styles.windContainer}>
+                      <Text style={styles.wind}>
+                        <Image style={styles.windIcon} source={require('./imgs/wind.png')}/>
+                        {todayWeather.windSpeed[index]} km/h
+                      </Text>
+                    </View>
+                  </View>
+                ))}
+              </ScrollView>
             </View>
           ) : null}
 

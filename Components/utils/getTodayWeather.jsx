@@ -15,6 +15,7 @@ const getTodayWeather = async (
     let hours = [];
     let temp = [];
     let description = [];
+    let emoji = [];
     let windSpeed = [];
 
     // Construct API query
@@ -52,6 +53,9 @@ const getTodayWeather = async (
       description.push(
         openWeatherWMOToEmoji(weatherCode).description
       );
+      emoji.push(
+         openWeatherWMOToEmoji(weatherCode).value
+      );
       windSpeed.push(windSpeedValue);
 
       // Prepare data for VictoryChart for only specific hours
@@ -67,6 +71,7 @@ const getTodayWeather = async (
       temp: temp,
       description: description,
       windSpeed: windSpeed,
+      emoji: emoji,
     });
 
     console.log('Today Chart Data:', dataPoints);
