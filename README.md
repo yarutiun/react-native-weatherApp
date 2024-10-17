@@ -41,9 +41,8 @@ This is an advanced weather application built with React Native that provides cu
    ```
 
 4. Run the app on your device or emulator:
-   ```bash
-   npm run android  # For Android
-   npm run ios      # For iOS
+   ```
+      npx expo start
    ```
 
 ## Usage
@@ -52,28 +51,12 @@ This is an advanced weather application built with React Native that provides cu
 - Click the geolocation button to fetch weather data based on your current location.
 - Switch between the \Current,\ \Today,\ and \Weekly\ tabs to view different weather information.
 
-## File Structure
-
-```
-advanced_weather_app/
-├── Components/
-│   ├── BottomBar/
-│   ├── Style/
-│   ├── TopBar/
-│   ├── Weather/
-│   └── ...
-├── imgs/
-├── App.js
-├── package.json
-└── ...
-```
-
 ## Screenshots
 
-![Search Bar](screenshots/search_bar.png)
-![Current Weather](screenshots/current_weather.png)
-![Today's Weather](screenshots/today_weather.png)
-![Weekly Weather](screenshots/weekly_weather.png)
+![Search Bar](./README%20Imgs/recomendation.png)
+![Current Weather](./README%20Imgs/current.png)
+![Today's Weather](./README%20Imgs/today.png)
+![Weekly Weather](./README%20Imgs/weekly.png)
 
 ## API Used
 
@@ -83,7 +66,3 @@ advanced_weather_app/
 ## Contributing
 
 Contributions are welcome! Please submit a pull request or open an issue to discuss changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
