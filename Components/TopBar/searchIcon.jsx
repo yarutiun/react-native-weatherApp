@@ -13,6 +13,7 @@ const SearchIcon = ({
   setTodayWeather,
   setWeeklyWeather,
   setTodayChart,
+  setWeeklyChart,
 }) => {
   // Handler for search icon press
   const handleSearchPress = async () => {
@@ -29,7 +30,7 @@ const SearchIcon = ({
       await getTodayWeather(lat_long.lat, lat_long.long, setTodayWeather, city, setTodayChart);
 
       // Fetch weekly weather
-      await getWeeklyWeather(lat_long.lat, lat_long.long, setWeeklyWeather);
+      await getWeeklyWeather(lat_long.lat, lat_long.long, setWeeklyWeather, city, setWeeklyChart);
     } catch (error) {
       console.error('Error fetching weather data:', error);
       alert('Failed to fetch weather data. Please try again.');

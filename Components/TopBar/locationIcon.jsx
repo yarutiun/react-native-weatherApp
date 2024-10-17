@@ -18,13 +18,14 @@ const LocationIcon = ({
   setWeeklyWeather,
   setCity,
   setTodayChart,
+  setWeeklyChart,
 }) => {
   const handlePress = async () => {
     try {
       await getPermissions({ setLatLong, setCity });
       await getCurrentWeather(lat_long.lat, lat_long.long, setCurrentWeather);
       await getTodayWeather(lat_long.lat, lat_long.long, setTodayWeather, "", setTodayChart);
-      await getWeeklyWeather(lat_long.lat, lat_long.long, setWeeklyWeather);
+      await getWeeklyWeather(lat_long.lat, lat_long.long, setWeeklyWeather, "", setWeeklyChart);
     } catch (error) {
       console.error('Error fetching weather data:', error);
       alert('Failed to fetch weather data. Please try again.');

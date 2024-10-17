@@ -109,6 +109,15 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 5,              // Add some margin to separate icon from text
   },
+  emojiIcon: {
+    fontSize: 45,               // Adjust emoji size if needed
+  },
+  max: {
+    color: '#e74c3c',
+  },
+  min: {
+    color: '#043c61',
+  }
 });
 
 export default styles;

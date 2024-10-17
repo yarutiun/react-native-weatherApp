@@ -28,7 +28,8 @@ const App = () => {
     description: [],
     windSpeed: [],
   });
-  const [todayChart, setTodayChart] = useState([]); // Initialize as empty array
+  const [todayChart, setTodayChart] = useState([]);
+  const [weeklyChart, setWeeklyChart] = useState({ minData: [], maxData: [] });
   const [weeklyWeather, setWeeklyWeather] = useState({
     date: [],
     min: [],
@@ -54,6 +55,7 @@ const App = () => {
               setCurrentWeather={setCurrentWeather}
               setTodayWeather={setTodayWeather}
               setTodayChart={setTodayChart}
+              setWeeklyChart={setWeeklyChart}
               setWeeklyWeather={setWeeklyWeather}
             />
           </View>
@@ -72,6 +74,7 @@ const App = () => {
               setWeeklyWeather={setWeeklyWeather}
               setCity={setCity}
               setTodayChart={setTodayChart}
+              setWeeklyChart={setWeeklyChart}
             />
           </View>
         </View>
@@ -116,10 +119,6 @@ const App = () => {
                       data: { stroke: "#c43a31" },
                       parent: { border: "1px solid #ccc" },
                     }}
-                    // style={{
-                    //   data: { stroke: "#c43a31", strokeWidth: 2 }, // Set the line color and thickness
-                    // }}
-                    // interpolation="linear" // Change to "natural" for smooth lines
                   />
                 </VictoryChart>
               )}
@@ -138,7 +137,10 @@ const App = () => {
                     </Text>
                     <View style={styles.windContainer}>
                       <Text style={styles.wind}>
-                        <Image style={styles.windIcon} source={require('./imgs/wind.png')}/>
+                        <Image
+                          style={styles.windIcon}
+                          source={require("./imgs/wind.png")}
+                        />
                         {todayWeather.windSpeed[index]} km/h
                       </Text>
                     </View>
@@ -151,13 +153,45 @@ const App = () => {
           {/* Weekly Weather */}
           {when === "Weekly" && weeklyWeather.date.length > 0 ? (
             <View>
-              {weeklyWeather.date.map((day, index) => (
-                <Text key={index} style={styles.weatherItem}>
-                  {day}, Min: {weeklyWeather.min[index]}°C, Max:{" "}
-                  {weeklyWeather.max[index]}°C, Weather:{" "}
-                  {weeklyWeather.description[index]}
-                </Text>
-              ))}
+              {/* VictoryChart for Weekly Min and Max Temperature */}
+              {weeklyChart.minData.length > 0 &&
+                weeklyChart.maxData.length > 0 && (
+                  <VictoryChart theme={VictoryTheme.material}>
+                    {/* Min Temperature Line */}
+                    <VictoryLine
+                      data={weeklyChart.minData}
+                      style={{
+                        data: { stroke: "#043c61" }, // Blue for min temperatures
+                        parent: { border: "1px solid #ccc" },
+                      }}
+                    />
+                    {/* Max Temperature Line */}
+                    <VictoryLine
+                      data={weeklyChart.maxData}
+                      style={{
+                        data: { stroke: "#e74c3c" }, // Red for max temperatures
+                        parent: { border: "1px solid #ccc" },
+                      }}
+                    />
+                  </VictoryChart>
+                )}
+              {/* Weekly weather details */}
+              <ScrollView horizontal={true} style={styles.scrollView}>
+                {weeklyWeather.date.map((day, index) => (
+                  <View key={index} style={styles.weatherItem}>
+                  <Text style={styles.hour}>{day}</Text>
+                  <Text style={styles.emojiIcon}>
+                    {weeklyWeather.icon[index]}
+                  </Text>
+                  <Text style={styles.max}>
+                    {weeklyWeather.max[index]}°C max
+                  </Text>
+                  <Text style={styles.min}>
+                    {weeklyWeather.min[index]}°C min
+                  </Text>
+                </View>
+                ))}
+              </ScrollView>
             </View>
           ) : null}
         </ScrollView>

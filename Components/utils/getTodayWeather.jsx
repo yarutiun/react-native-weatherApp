@@ -74,8 +74,6 @@ const getTodayWeather = async (
       emoji: emoji,
     });
 
-    console.log('Today Chart Data:', dataPoints);
-
     // Update todayChart state with the filtered chart data
     setTodayChart(dataPoints);
   } catch (error) {
