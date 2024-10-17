@@ -53,10 +53,10 @@ This is an advanced weather application built with React Native that provides cu
 
 ## Screenshots
 
+<img src="./README%20Imgs/current.png" alt="Current Weather"/>
+<img src="./README%20Imgs/today.png" alt="Today's Weather"/>
+<img src="./README%20Imgs/weekly.png" alt="Weekly Weather"/>
 <img src="./README%20Imgs/recomendation.png" alt="Search Bar" width="600" height="400"/>
-<img src="./README%20Imgs/current.png" alt="Current Weather" width="600" height="400"/>
-<img src="./README%20Imgs/today.png" alt="Today's Weather" width="600" height="400"/>
-<img src="./README%20Imgs/weekly.png" alt="Weekly Weather" width="600" height="400"/>
 
 
 ## API Used
