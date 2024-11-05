@@ -8,9 +8,9 @@ const getCurrentWeather = async (lat, long, setCurrentWeather, location) => {
         const desc = openWeatherWMOToEmoji(data.current.weather_code);
         setCurrentWeather({
             location: '',
-            temp: `${data.current.temperature_2m}°C`,
+            temp: `${data.current.temperature_2m} `,
             description: `${desc.description} ${desc.value}`,
-            windSpeed: `${data.current.wind_speed_10m} km/h`
+            windSpeed: `${data.current.wind_speed_10m} `
         });
     } catch (error) {
         alert('Error fetching weather data');
