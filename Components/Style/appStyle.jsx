@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'rgba(173, 216, 230, 0.5)',
     paddingVertical: 10,  // Add vertical padding for better centering
+    borderRadius: 7,
+    borderColor: 'black',
+    borderWidth: 1,
   },
   weatherItem: {
     alignItems: 'center',
@@ -114,6 +117,7 @@ const styles = StyleSheet.create({
   },
   max: {
     color: '#e74c3c',
+    marginBottom: 5,            // Add some margin to separate elements
   },
   min: {
     color: '#043c61',
