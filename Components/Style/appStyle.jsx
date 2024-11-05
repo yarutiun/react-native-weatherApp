@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   curTemp: {
     fontSize: 40,
     color: "orange",
+    marginLeft: 50,
   },
   curWeather: {
     fontSize: 40,
